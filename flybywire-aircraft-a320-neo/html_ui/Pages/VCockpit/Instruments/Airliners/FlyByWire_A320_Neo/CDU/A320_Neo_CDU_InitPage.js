@@ -47,17 +47,20 @@ class CDUInitPage {
             requestButton = "REQUEST ";
         }
 
-        if (mcdu.flightPlanManager.getPersistentOrigin() && mcdu.flightPlanManager.getPersistentOrigin().ident) {
-            if (mcdu.flightPlanManager.getDestination() && mcdu.flightPlanManager.getDestination().ident) {
-                fromTo.update(mcdu.flightPlanManager.getPersistentOrigin().ident + "/" + mcdu.flightPlanManager.getDestination().ident, Column.cyan);
-                if (coRoute.raw.includes("__________")) {
+        const origin = mcdu.flightPlanService.active.originAirport;
+        const dest = mcdu.flightPlanService.active.destinationAirport;
+
+        if (origin) {
+            if (dest) {
+                fromTo.upoate(origin.ident + "/" + dest.ident + "[color]cyan");
+                if (coRoute.raw.includes("__________[color]amber")) {
                     coRoute.text = "";
                 }
 
                 // If an active SimBrief OFP matches the FP, hide the request option
                 // This allows loading a new OFP via INIT/REVIEW loading a different orig/dest to the current one
                 if (mcdu.simbrief.sendStatus != "DONE" ||
-                    (mcdu.simbrief["originIcao"] === mcdu.flightPlanManager.getPersistentOrigin().ident && mcdu.simbrief["destinationIcao"] === mcdu.flightPlanManager.getDestination().ident)) {
+                    (mcdu.simbrief["originIcao"] === origin.ident && mcdu.simbrief["destinationIcao"] === dest.ident)) {
                     requestEnable = false;
                     requestButtonLabel = "";
                     requestButton = "";
@@ -113,7 +116,7 @@ class CDUInitPage {
                     }
                 };
 
-                if (mcdu.flightPlanManager.getPersistentOrigin()) {
+                if (mcdu.flightPlanService.active.originAirport) {
                     alignOption = "IRS INIT>";
                 }
 
@@ -190,10 +193,8 @@ class CDUInitPage {
                         scratchpadCallback();
                     }
                 });
-            } else if (mcdu.flightPlanManager.getPersistentOrigin() && mcdu.flightPlanManager.getPersistentOrigin().ident) {
-                if (mcdu.flightPlanManager.getDestination() && mcdu.flightPlanManager.getDestination().ident) {
-                    CDUAvailableFlightPlanPage.ShowPage(mcdu);
-                }
+            } else if (mcdu.flightPlanService.active.originAirport && mcdu.flightPlanService.active.destinationAirport) {
+                CDUAvailableFlightPlanPage.ShowPage(mcdu);
             }
         };
         mcdu.onRightInput[1] = () => {
@@ -325,7 +326,7 @@ class CDUInitPage {
             isFinite(mcdu.zeroFuelWeightMassCenter) &&
             isFinite(mcdu.zeroFuelWeight) &&
             mcdu.cruiseFlightLevel &&
-            mcdu.flightPlanManager.getWaypointsCount() > 0 &&
+            mcdu.flightPlanService.active && mcdu.flightPlanService.active.legCount > 0 &&
             mcdu._zeroFuelWeightZFWCGEntered &&
             mcdu._blockFuelEntered;
     }
