@@ -618,7 +618,7 @@ class FMCMainDisplay extends BaseAirliners {
         }
 
         if (this.ilsUpdateThrottler.canUpdate(_deltaTime) !== -1) {
-            this.updateIls();
+            //this.updateIls();
         }
 
         if (this.efisSymbols) {
