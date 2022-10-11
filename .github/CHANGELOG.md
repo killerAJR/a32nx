@@ -99,6 +99,7 @@
 1. [PFD] Improve appearance of L/DEV and V/DEV scales - @tracernz (Mike)
 1. [HYD] Implemented Electro Hydrostatic actuators - @Crocket63 (crocket)
 1. [FAC] Move Speedscale computation to FAC - @lukecologne (luke)
+1. [EFB] Added pause at T/D function - @2hwk (2Cas#1022)
 
 ## 0.8.0
 
