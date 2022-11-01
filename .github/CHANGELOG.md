@@ -91,6 +91,7 @@
 1. [LIGHTS] Redone cockpit emissives panels and ambient lighting -@FinalLightNL (FinalLight)
 1. [FMGC] Rework f-pln departure page - @tracernz (Mike)
 1. [HYD] Fixed autobrake controller tuning - @Crocket63 (crocket)
+1. [ENGINE] Improved engine primary parameters performance (EGT & Fuel Flow) - @Taz5150 (TazX [Z+2]#0405)
 
 ## 0.8.0
 
