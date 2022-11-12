@@ -2380,13 +2380,14 @@ class FMCMainDisplay extends BaseAirliners {
         });
     }
 
+    /** @param {RawApproach} appr */
     async tuneIlsFromApproach(appr) {
         const finalLeg = appr.finalLegs[appr.finalLegs.length - 1];
         const ilsIcao = finalLeg.originIcao.trim();
         if (ilsIcao.length > 0) {
             try {
                 const ils = await this.facilityLoader.getFacility(ilsIcao).catch(console.error);
-                if (ils.infos.frequencyMHz > 1) {
+                if (ils && ils.infos.frequencyMHz > 1) {
                     this.ilsAutoFrequency = ils.infos.frequencyMHz;
                     this.ilsAutoIcao = ils.infos.icao;
                     this.ilsAutoIdent = ils.infos.ident;
@@ -2693,7 +2694,7 @@ class FMCMainDisplay extends BaseAirliners {
             }).catch((err) => {
                 if (err instanceof McduMessage) {
                     this.setScratchpadMessage(err);
-                } else {
+                } else if (err) {
                     console.error(err);
                 }
                 return callback(false);
@@ -4736,7 +4737,7 @@ class FMCMainDisplay extends BaseAirliners {
                             if (waypoint) {
                                 resolve(waypoint);
                             } else {
-                                reject('User aborted');
+                                reject();
                             }
                         }, { ident: s });
                     });
@@ -4767,7 +4768,7 @@ class FMCMainDisplay extends BaseAirliners {
             }).catch((err) => {
                 if (err instanceof McduMessage) {
                     this.setScratchpadMessage(err);
-                } else {
+                } else if (err) {
                     console.error(err);
                 }
                 return callback(false);
