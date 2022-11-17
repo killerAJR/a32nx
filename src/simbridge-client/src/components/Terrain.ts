@@ -4,8 +4,17 @@
 import { EfisSide } from '@shared/NavigationDisplay';
 import { getSimBridgeUrl } from '../common';
 
+export interface TerrainRangeData {
+    minElevation: number,
+    minElevationIsWarning: boolean,
+    minElevationIsCaution: boolean,
+    maxElevation: number,
+    maxElevationIsWarning: boolean,
+    maxElevationIsCaution: boolean,
+}
+
 export class Terrain {
-    private static endpointsAvailable: boolean = false;
+    private static endpointsAvailable: boolean = true;
 
     public static async mapdataAvailable(): Promise<boolean> {
         return fetch(`${getSimBridgeUrl()}/api/v1/terrain/available`).then((response) => {
@@ -68,21 +77,13 @@ export class Terrain {
             return fetch(`${getSimBridgeUrl()}/api/v1/terrain/ndmaps?display=${side}&timestamp=${timestamp}`, {
                 method: 'GET',
                 headers: { Accept: 'application/json' },
-            }).then((response) => response.json().then((imageBase64) => imageBase64));
+            }).then((response) => response.json());
         }
 
         throw new Error('Endpoints unavailable');
     }
 
-    public static async ndTerrainRange(side: EfisSide, timestamp: number):
-    Promise<{
-        minElevation: number,
-        minElevationIsWarning: boolean,
-        minElevationIsCaution: boolean,
-        maxElevation: number,
-        maxElevationIsWarning: boolean,
-        maxElevationIsCaution: boolean
-    }> {
+    public static async ndTerrainRange(side: EfisSide, timestamp: number): Promise<TerrainRangeData> {
         if (Terrain.endpointsAvailable) {
             return fetch(`${getSimBridgeUrl()}/api/v1/terrain/terrainRange?display=${side}&timestamp=${timestamp}`, {
                 method: 'GET',
