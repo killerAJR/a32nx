@@ -103,6 +103,7 @@
 1. [EFB] Added pause at T/D function - @2hwk (2Cas#1022)
 1. [RMP] RMPs navigation backup - Julian Sebline (Julian Sebline#8476 on Discord)
 1. [EFB] Improved simbridge-client connection handling - @frankkopp (Frank Kopp)
+1. [EFB] Added deboarding button to flyPad Payload - @frankkopp (Frank Kopp)
 
 ## 0.8.0
 
