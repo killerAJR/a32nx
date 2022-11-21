@@ -51,6 +51,7 @@ declare global {
     namespace Fmgc {
         const FlightPhaseManager: typeof FlightPhaseManager_
     }
+
 }
 
 export {};
