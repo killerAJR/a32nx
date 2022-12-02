@@ -22,7 +22,8 @@ use spoilers::spoilers;
 use std::error::Error;
 use systems::failures::FailureType;
 use systems::shared::{
-    ElectricalBusType, GearActuatorId, HydraulicColor, LgciuId, ProximityDetectorId,
+    AirbusElectricPumpId, AirbusEngineDrivenPumpId, ElectricalBusType, GearActuatorId,
+    HydraulicColor, LgciuId, ProximityDetectorId,
 };
 use systems_wasm::aspects::ExecuteOn;
 use systems_wasm::{MsfsSimulationBuilder, Variable};
@@ -79,6 +80,22 @@ async fn systems(mut gauge: msfs::Gauge) -> Result<(), Box<dyn Error>> {
         (
             29_008,
             FailureType::ReservoirReturnLeak(HydraulicColor::Yellow),
+        ),
+        (
+            29_009,
+            FailureType::EnginePumpOverheat(AirbusEngineDrivenPumpId::Green),
+        ),
+        (
+            29_011,
+            FailureType::EnginePumpOverheat(AirbusEngineDrivenPumpId::Yellow),
+        ),
+        (
+            29_010,
+            FailureType::ElecPumpOverheat(AirbusElectricPumpId::Blue),
+        ),
+        (
+            29_012,
+            FailureType::ElecPumpOverheat(AirbusElectricPumpId::Yellow),
         ),
         (31_500, FailureType::FlightWarningComputer(1)),
         (31_501, FailureType::FlightWarningComputer(2)),
@@ -160,6 +177,7 @@ async fn systems(mut gauge: msfs::Gauge) -> Result<(), Box<dyn Error>> {
         ),
         (34_000, FailureType::RadioAltimeter(1)),
         (34_001, FailureType::RadioAltimeter(2)),
+
     ])
     .provides_aircraft_variable("ACCELERATION BODY X", "feet per second squared", 0)?
     .provides_aircraft_variable("ACCELERATION BODY Y", "feet per second squared", 0)?
