@@ -112,6 +112,8 @@
 1. [EFB] Improved simbridge-client connection handling - @frankkopp (Frank Kopp)
 1. [EFB] Added deboarding button to flyPad Payload - @frankkopp (Frank Kopp)
 1. [HYD] Trimmable physical assemblies - @Crocket63 (crocket)
+1. [HYD] Simulation of the rudder mechanical assembly and yaw dampers - @Crocket63 (crocket)
+
 
 ## 0.8.0
 

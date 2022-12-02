@@ -402,7 +402,7 @@
 - A32NX_RMP_{L,R}_SAVED_ACTIVE_FREQUENCY_ADF
     - Hz
     - The ADF active frequency that is saved for display for the left/right RMP.
-   
+
 - A32NX_RMP_{L,R}_SAVED_STANDBY_FREQUENCY_VOR
     - Hz
     - The VOR standby frequency that is saved for display for the left/right RMP.
@@ -3107,6 +3107,10 @@ In the variables below, {number} should be replaced with one item in the set: { 
         - 1
         - 2
 
+- A32NX_HYD_RUDDER_TRIM_FEEDBACK_ANGLE
+    - Degree
+    - Rudder trim unit position feedback
+
 - A32NX_RUDDER_TRAVEL_LIM_{number}_ACTIVE_MODE_COMMANDED
     - Boolean
     - RTL electric motor {number} is commanded active
@@ -3120,6 +3124,10 @@ In the variables below, {number} should be replaced with one item in the set: { 
     - {number}
         - 1
         - 2
+
+- A32NX_HYD_RUDDER_LIMITER_FEEDBACK_ANGLE
+    - Degree
+    - Rudder travel limiter unit position feedback
 
 - A32NX_THS_{number}_ACTIVE_MODE_COMMANDED
     - Boolean
