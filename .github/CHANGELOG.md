@@ -110,6 +110,7 @@
 1. [RMP] RMPs navigation backup - Julian Sebline (Julian Sebline#8476 on Discord)
 1. [EFB] Improved simbridge-client connection handling - @frankkopp (Frank Kopp)
 1. [EFB] Added deboarding button to flyPad Payload - @frankkopp (Frank Kopp)
+1. [HYD] Trimmable physical assemblies - @Crocket63 (crocket)
 
 ## 0.8.0
 
