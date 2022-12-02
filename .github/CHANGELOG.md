@@ -63,6 +63,7 @@
 1. [FMGC] Fix inbound leg time for holds - @tracernz (Mike)
 1. [MCDU] Improved visuals of Init-A and Init-B page - @derl30n (Leon)
 1. [MODEL] Added new animated gear gravity extension handle- @tyler58546 (tyler58546), @MoreRightRudder (Mike), @Crocket63 (crocket), @Lantarius
+1. [HYD] Custom Lvar for gear lever to fix ground collision bug - @Crocket63 (crocket)
 1. [HYD] Randomised per actuator flow restrictions at plane init - @Crocket63 (crocket)
 1. [MCDU] Hide stored elements on A/C Status when there are none - @tracernz (Mike)
 1. [FMGC] Fix ident for CD legs - @tracernz (Mike)
@@ -103,6 +104,7 @@
 1. [HYD] Fix incorrect gain in down pitch commands - @Crocket63 (crocket)
 1. [PFD] Improve appearance of L/DEV and V/DEV scales - @tracernz (Mike)
 1. [HYD] Implemented Electro Hydrostatic actuators - @Crocket63 (crocket)
+1. [MISC] Change 2 way overhead switches to be also controllable with mouse wheel up/down @patsta32 (Pat)
 1. [FAC] Move Speedscale computation to FAC - @lukecologne (luke)
 1. [EFB] Added pause at T/D function - @2hwk (2Cas#1022)
 1. [RMP] RMPs navigation backup - Julian Sebline (Julian Sebline#8476 on Discord)
